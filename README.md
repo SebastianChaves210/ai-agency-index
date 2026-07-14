@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Agency Index
 
-## Getting Started
+The independent directory of vetted AI automation agencies & consultants.
+Buyers compare specialists by service, industry, region, and budget, then
+request intros directly. Agencies list free or pay for Featured/Partner
+placement.
 
-First, run the development server:
+**Live:** deployed on Vercel · **Stack:** Next.js (App Router), TypeScript, Tailwind CSS v4
+
+## Features
+
+- Searchable, filterable directory (service / industry / region / budget)
+- 24 sample agency profiles with full SSG pages and JSON-LD structured data
+- Programmatic SEO category pages for every service and industry
+- Monetization built in: Featured ($99/mo) and Partner ($249/mo) tiers,
+  labeled sponsor slot, pricing page, Stripe-payment-link ready
+- Lead capture (`/api/leads`) for intro requests and listing applications,
+  with optional webhook forwarding
+- Sitemap, robots, OpenGraph image, custom 404
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev       # http://localhost:3000
+npm run build     # production build + data validation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Data
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All listings live in **`data/listings.ts`** — a single typed file that drives
+every page, filter, count, and sitemap entry. Current entries are clearly
+labeled mock data. See **CLAUDE.md → "Swapping in real data"** for the exact
+schema and swap procedure.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment variables (all optional)
 
-## Learn More
+| Var | Purpose |
+|---|---|
+| `NEXT_PUBLIC_SITE_URL` | Canonical URL (defaults to the Vercel production URL) |
+| `NEXT_PUBLIC_STRIPE_LINK_FEATURED` | Stripe payment link for the Featured tier |
+| `NEXT_PUBLIC_STRIPE_LINK_PARTNER` | Stripe payment link for the Partner tier |
+| `LEADS_WEBHOOK_URL` | Forward every lead as JSON to this webhook |
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Any Vercel deployment works out of the box — no database or env vars required
+for the base site.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+vercel --prod
+```
