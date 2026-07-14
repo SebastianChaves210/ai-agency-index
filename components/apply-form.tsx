@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 
-const inputClasses =
-  "w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-faint transition-colors hover:border-line-strong focus:border-pine";
+const inputClasses = "field95 w-full px-3 py-2 text-sm";
 
 /**
  * Listing application on /get-listed. Submissions POST to /api/leads with
@@ -31,11 +30,11 @@ export function ApplyForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-xl border border-pine/25 bg-pine-soft p-6">
-        <p className="font-display text-lg font-semibold text-pine-deep">
-          Application received
+      <div className="border-2 border-grass bg-[#ccffcc] p-6">
+        <p className="font-comic text-lg font-bold text-[#004400]">
+          ✔ Application received!
         </p>
-        <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+        <p className="mt-2 text-sm leading-relaxed text-black">
           We review every application by hand. Expect a decision — and your
           verification checklist — within three business days.
         </p>
@@ -81,13 +80,10 @@ export function ApplyForm() {
         <svg
           viewBox="0 0 12 12"
           aria-hidden
-          className="pointer-events-none absolute right-3 top-1/2 h-3 w-3 -translate-y-1/2 text-ink-faint"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
+          className="pointer-events-none absolute right-3 top-1/2 h-3 w-3 -translate-y-1/2 text-black"
+          fill="currentColor"
         >
-          <path d="M2.5 4.5L6 8l3.5-3.5" />
+          <path d="M1.5 3.5h9L6 9z" />
         </svg>
       </div>
       <textarea
@@ -99,12 +95,12 @@ export function ApplyForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full rounded-lg bg-pine px-4 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-pine-deep disabled:opacity-60 sm:w-auto sm:px-6"
+        className="btn95 btn95-hot w-full px-4 py-2.5 text-sm sm:w-auto sm:px-6"
       >
         {status === "submitting" ? "Submitting…" : "Apply for a listing"}
       </button>
       {status === "error" && (
-        <p className="text-sm text-[#a03d2e]">
+        <p className="text-sm font-bold text-hot-deep">
           Something went wrong — please try again in a moment.
         </p>
       )}

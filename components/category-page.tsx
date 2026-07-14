@@ -41,28 +41,26 @@ export function CategoryPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <nav aria-label="Breadcrumb" className="text-sm text-ink-faint">
+      <nav aria-label="Breadcrumb" className="font-mono text-xs font-bold">
         <ol className="flex flex-wrap items-center gap-1.5">
           <li>
-            <Link href="/" className="hover:text-ink">
+            <Link href="/" className="weblink">
               Directory
             </Link>
           </li>
-          <li aria-hidden>/</li>
-          <li aria-current="page" className="text-ink">
+          <li aria-hidden>»</li>
+          <li aria-current="page" className="text-black">
             {title}
           </li>
         </ol>
       </nav>
 
       <header className="mt-8 max-w-3xl">
-        <p className="microlabel text-pine">{kicker}</p>
-        <h1 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight">
-          {title}
-        </h1>
-        <p className="mt-4 text-lg leading-relaxed text-ink-soft">{blurb}</p>
-        <p className="microlabel mt-6 text-ink-faint">
-          {agencies.length} {agencies.length === 1 ? "agency" : "agencies"} listed
+        <p className="microlabel text-hot-deep">★ {kicker} ★</p>
+        <h1 className="wordart mt-3 text-4xl leading-tight">{title}</h1>
+        <p className="mt-4 text-base leading-relaxed text-face-darker">{blurb}</p>
+        <p className="microlabel mt-6 text-black">
+          ► {agencies.length} {agencies.length === 1 ? "agency" : "agencies"} listed
         </p>
       </header>
 
@@ -72,14 +70,18 @@ export function CategoryPage({
         ))}
       </div>
 
-      <section className="mt-20 border-t border-line pt-8">
-        <h2 className="microlabel text-ink-faint">{otherHeading}</h2>
+      <div className="hr-rainbow mt-16" aria-hidden />
+
+      <section className="mt-8">
+        <h2 className="microlabel inline-block bg-navy px-2 py-1 text-white">
+          {otherHeading}
+        </h2>
         <div className="mt-4 flex flex-wrap gap-2.5">
           {otherLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="rounded-full border border-line bg-surface px-4 py-2 text-sm transition-colors hover:border-line-strong"
+              className="border-2 border-black bg-face px-3 py-1.5 text-xs font-bold shadow-[2px_2px_0_var(--face-dark)] hover:bg-sun"
             >
               {l.label}
             </Link>

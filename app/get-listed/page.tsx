@@ -91,13 +91,13 @@ const FAQS = [
 
 export default function GetListedPage() {
   return (
-    <div className="mx-auto max-w-6xl px-6 pt-16">
+    <div className="mx-auto max-w-6xl px-6 pt-14">
       <header className="max-w-3xl">
-        <p className="microlabel text-pine">For agencies</p>
-        <h1 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+        <p className="microlabel text-hot-deep">★ For agencies ★</p>
+        <h1 className="wordart mt-4 text-4xl leading-tight sm:text-5xl">
           Be where buyers compare AI agencies.
         </h1>
-        <p className="mt-5 text-lg leading-relaxed text-ink-soft">
+        <p className="mt-5 text-base leading-relaxed text-face-darker">
           {SITE.name} lists {STATS.agencies} agencies across{" "}
           {STATS.countries} countries. Buyers arrive with a project and a
           budget; profiles state minimum engagements up front, so the intros
@@ -106,61 +106,52 @@ export default function GetListedPage() {
       </header>
 
       {/* Pricing */}
-      <section id="pricing" className="mt-14 scroll-mt-24">
-        <div className="grid gap-5 lg:grid-cols-3">
+      <section id="pricing" className="mt-14 scroll-mt-32">
+        <div className="grid gap-6 lg:grid-cols-3">
           {TIERS.map((tier) => (
             <div
               key={tier.name}
-              className={`flex flex-col rounded-2xl border p-7 ${
+              className={`flex flex-col border-2 p-7 shadow-[5px_5px_0_var(--face-dark)] ${
                 tier.highlight
-                  ? "border-pine bg-pine-soft/60 shadow-[0_1px_0_var(--pine)]"
-                  : "border-line bg-surface"
+                  ? "border-hot-deep bg-butter"
+                  : "border-black bg-white"
               }`}
             >
-              <div className="flex items-center justify-between">
-                <h2 className="font-display text-xl font-semibold tracking-tight">
+              <div className="flex items-center justify-between gap-2">
+                <h2 className="font-display text-xl tracking-wide text-navy">
                   {tier.name}
                 </h2>
                 {tier.highlight && (
-                  <span className="microlabel rounded-full bg-pine px-2.5 py-1 text-paper">
-                    Most popular
+                  <span className="border border-black bg-hot-deep px-1.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-sun">
+                    <span className="blink">★</span> Most popular
                   </span>
                 )}
               </div>
               <p className="mt-4">
-                <span className="font-display text-4xl font-semibold">
+                <span className="font-display text-4xl text-black">
                   {tier.price}
                 </span>
-                <span className="ml-2 text-sm text-ink-faint">{tier.cadence}</span>
+                <span className="ml-2 font-mono text-xs text-face-darker">
+                  {tier.cadence}
+                </span>
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+              <p className="mt-3 text-sm leading-relaxed text-face-darker">
                 {tier.blurb}
               </p>
               <ul className="mt-6 space-y-2.5 text-sm">
                 {tier.features.map((f) => (
                   <li key={f} className="flex gap-2.5">
-                    <svg
-                      viewBox="0 0 16 16"
-                      aria-hidden
-                      className="mt-0.5 h-4 w-4 shrink-0 text-pine"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M3 8.5l3.2 3L13 4.5" />
-                    </svg>
-                    <span className="text-ink-soft">{f}</span>
+                    <span aria-hidden className="font-bold text-grass">
+                      ✔
+                    </span>
+                    <span className="text-black">{f}</span>
                   </li>
                 ))}
               </ul>
               <a
                 href={tier.href}
-                className={`mt-8 rounded-lg px-4 py-2.5 text-center text-sm font-medium transition-colors ${
-                  tier.highlight
-                    ? "bg-pine text-paper hover:bg-pine-deep"
-                    : "border border-line bg-paper hover:border-line-strong"
+                className={`btn95 mt-8 px-4 py-2.5 text-sm ${
+                  tier.highlight ? "btn95-hot" : ""
                 }`}
               >
                 {tier.cta}
@@ -168,38 +159,53 @@ export default function GetListedPage() {
             </div>
           ))}
         </div>
-        <p className="mt-4 text-sm text-ink-faint">
+        <p className="mt-6 font-mono text-xs text-face-darker">
           Verification is independent of payment on every tier — a paid
           placement is labeled, never disguised.
         </p>
       </section>
 
+      <div className="hr-rainbow mt-16" aria-hidden />
+
       {/* Apply */}
-      <section id="apply" className="mt-20 scroll-mt-24 rounded-2xl border border-line bg-surface p-8 sm:p-10">
-        <div className="max-w-2xl">
-          <h2 className="font-display text-2xl font-semibold tracking-tight">
-            Apply for a listing
-          </h2>
-          <p className="mt-2 leading-relaxed text-ink-soft">
-            Every listing — free or paid — starts with an application. We
-            review each one by hand to keep the index worth searching.
-          </p>
+      <section id="apply" className="win-panel mt-12 scroll-mt-32">
+        <div className="titlebar px-2 py-1">
+          C:\AI-AGENCY-INDEX\APPLY\listing-application.exe
         </div>
-        <div className="mt-8 max-w-2xl">
-          <ApplyForm />
+        <div className="p-6 sm:p-9">
+          <div className="max-w-2xl">
+            <h2 className="font-display text-2xl text-navy [text-shadow:2px_2px_0_#fff]">
+              Apply for a listing
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-face-darker sm:text-base">
+              Every listing — free or paid — starts with an application. We
+              review each one by hand to keep the index worth searching.
+            </p>
+          </div>
+          <div className="mt-8 max-w-2xl">
+            <ApplyForm />
+          </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="mt-20 max-w-3xl">
-        <h2 className="font-display text-2xl font-semibold tracking-tight">
+      <section className="mt-16 max-w-3xl">
+        <h2 className="font-display text-2xl text-navy [text-shadow:2px_2px_0_#fff]">
           Common questions
         </h2>
-        <dl className="mt-6 divide-y divide-line border-y border-line">
+        <dl className="mt-6 divide-y divide-dotted divide-face-dark border-y-2 border-black">
           {FAQS.map((faq) => (
             <div key={faq.q} className="py-5">
-              <dt className="font-medium">{faq.q}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-ink-soft">
+              <dt className="font-bold">
+                <span aria-hidden className="text-hot-deep">
+                  Q:{" "}
+                </span>
+                {faq.q}
+              </dt>
+              <dd className="mt-2 text-sm leading-relaxed text-face-darker">
+                <span aria-hidden className="font-bold text-grass">
+                  A:{" "}
+                </span>
                 {faq.a}
               </dd>
             </div>

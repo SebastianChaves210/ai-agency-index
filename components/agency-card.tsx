@@ -8,31 +8,29 @@ export function AgencyCard({ agency }: { agency: Agency }) {
   return (
     <Link
       href={`/agency/${agency.slug}`}
-      className={`group flex h-full flex-col rounded-xl border p-5 transition-colors ${
-        paid
-          ? "border-gold/25 bg-gold-soft/40 hover:border-gold/50"
-          : "border-line bg-surface hover:border-line-strong"
+      className={`group flex h-full flex-col border-2 p-4 shadow-[4px_4px_0_var(--face-dark)] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_var(--face-dark)] ${
+        paid ? "border-hot-deep bg-butter" : "border-black bg-white"
       }`}
     >
       <div className="flex items-start justify-between gap-3">
         <span
-          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg font-display text-base font-semibold ${logoClasses(
+          className={`flex h-11 w-11 shrink-0 items-center justify-center border-2 border-black font-display text-base ${logoClasses(
             agency.slug
           )}`}
           aria-hidden
         >
           {initials(agency.name)}
         </span>
-        <span className="flex items-center gap-2 pt-0.5">
+        <span className="flex items-center gap-1.5 pt-0.5">
           <TierBadge tier={agency.tier} />
           {agency.verified && <VerifiedBadge compact />}
         </span>
       </div>
 
-      <h3 className="mt-4 font-display text-lg font-semibold leading-snug tracking-tight group-hover:underline group-hover:decoration-line-strong group-hover:underline-offset-4">
+      <h3 className="mt-4 text-[15px] font-bold leading-snug text-link underline group-hover:text-hot">
         {agency.name}
       </h3>
-      <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-ink-soft">
+      <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-face-darker">
         {agency.tagline}
       </p>
 
@@ -40,14 +38,14 @@ export function AgencyCard({ agency }: { agency: Agency }) {
         {agency.services.slice(0, 2).map((slug) => (
           <span
             key={slug}
-            className="rounded-full border border-line bg-paper px-2.5 py-0.5 text-xs text-ink-soft"
+            className="border border-black bg-face px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide text-black"
           >
             {getService(slug)?.name}
           </span>
         ))}
       </div>
 
-      <div className="mt-auto flex flex-wrap items-center gap-x-2 gap-y-1 pt-4 text-xs text-ink-faint">
+      <div className="mt-auto flex flex-wrap items-center gap-x-2 gap-y-1 pt-4 font-mono text-[11px] text-face-darker">
         <span className="whitespace-nowrap">
           {agency.city}, {agency.country}
         </span>

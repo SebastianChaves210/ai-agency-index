@@ -1,67 +1,375 @@
 @import "tailwindcss";
 
 /*
-  Design tokens — restrained, editorial, premium.
-  Paper background, near-black ink, deep pine accent, muted gold for paid tiers.
+  Design tokens — deliberate early-web / Y2K homage.
+  A 2026 site wearing a 2000 skin: starfield tile background, Win95 silver
+  chrome, saturated primaries, classic blue links, web-safe font stacks.
+  Every retro effect here is modern CSS/SVG — no deprecated tags, no table
+  layouts, no real <marquee>/<blink>.
 */
 :root {
   color-scheme: light;
-  --paper: #faf9f6;
-  --surface: #ffffff;
-  --ink: #1a1915;
-  --ink-soft: #5c594e;
-  --ink-faint: #8d8a7e;
-  --line: #e7e4da;
-  --line-strong: #d6d2c4;
-  --pine: #21523f;
-  --pine-deep: #143427;
-  --pine-soft: #edf2ec;
-  --gold: #8f6d1e;
-  --gold-soft: #faf3e0;
-  --cream: #f3f0e7;
+  --space: #000033;
+  --face: #c0c0c0;
+  --face-light: #dfdfdf;
+  --face-dark: #808080;
+  --face-darker: #404040;
+  --navy: #000080;
+  --royal: #1084d0;
+  --link: #0000ee;
+  --visited: #551a8b;
+  --sun: #ffff00;
+  --butter: #ffffcc;
+  --hot: #ff0000;
+  --hot-deep: #cc0000;
+  --lime: #00ff00;
+  --grass: #008000;
+  --teal95: #008080;
+  --grape: #660099;
 }
 
 @theme inline {
-  --color-paper: var(--paper);
-  --color-surface: var(--surface);
-  --color-ink: var(--ink);
-  --color-ink-soft: var(--ink-soft);
-  --color-ink-faint: var(--ink-faint);
-  --color-line: var(--line);
-  --color-line-strong: var(--line-strong);
-  --color-pine: var(--pine);
-  --color-pine-deep: var(--pine-deep);
-  --color-pine-soft: var(--pine-soft);
-  --color-gold: var(--gold);
-  --color-gold-soft: var(--gold-soft);
-  --color-cream: var(--cream);
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-fraunces);
-  --font-mono: var(--font-geist-mono);
+  --color-space: var(--space);
+  --color-face: var(--face);
+  --color-face-light: var(--face-light);
+  --color-face-dark: var(--face-dark);
+  --color-face-darker: var(--face-darker);
+  --color-navy: var(--navy);
+  --color-royal: var(--royal);
+  --color-link: var(--link);
+  --color-visited: var(--visited);
+  --color-sun: var(--sun);
+  --color-butter: var(--butter);
+  --color-hot: var(--hot);
+  --color-hot-deep: var(--hot-deep);
+  --color-lime95: var(--lime);
+  --color-grass: var(--grass);
+  --color-teal95: var(--teal95);
+  --color-grape: var(--grape);
+  --font-sans: Verdana, Geneva, Tahoma, sans-serif;
+  --font-display: Impact, Haettenschweiler, "Arial Black", sans-serif;
+  --font-comic: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", cursive;
+  --font-mono: "Courier New", Courier, monospace;
+}
+
+/* Tiled starfield — the classic Space Jam backdrop, as an inline SVG tile */
+body,
+.bg-starfield {
+  background-color: var(--space);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Crect width='160' height='160' fill='%23000033'/%3E%3Ccircle cx='12' cy='18' r='1' fill='%23ffffff'/%3E%3Ccircle cx='60' cy='6' r='.7' fill='%23ffffcc' opacity='.8'/%3E%3Ccircle cx='104' cy='34' r='1.3' fill='%23ffffff'/%3E%3Ccircle cx='146' cy='12' r='.6' fill='%2399ccff'/%3E%3Ccircle cx='30' cy='58' r='.8' fill='%23ffffff' opacity='.7'/%3E%3Ccircle cx='84' cy='72' r='1' fill='%23ffff99'/%3E%3Ccircle cx='130' cy='60' r='.6' fill='%23ffffff' opacity='.6'/%3E%3Ccircle cx='8' cy='96' r='1.2' fill='%23ffffff'/%3E%3Ccircle cx='52' cy='112' r='.7' fill='%23ccffff' opacity='.8'/%3E%3Ccircle cx='98' cy='104' r='.5' fill='%23ffffff' opacity='.5'/%3E%3Ccircle cx='142' cy='120' r='1' fill='%23ffffff'/%3E%3Ccircle cx='24' cy='142' r='.6' fill='%23ffcccc' opacity='.7'/%3E%3Ccircle cx='72' cy='150' r='1.1' fill='%23ffffff' opacity='.9'/%3E%3Ccircle cx='118' cy='146' r='.7' fill='%23ffffff' opacity='.6'/%3E%3Cpath d='M40 30l1.5 3 3 1.5-3 1.5-1.5 3-1.5-3-3-1.5 3-1.5z' fill='%23ffffff' opacity='.9'/%3E%3Cpath d='M120 84l1.2 2.4 2.4 1.2-2.4 1.2-1.2 2.4-1.2-2.4-2.4-1.2 2.4-1.2z' fill='%23ffff66' opacity='.8'/%3E%3C/svg%3E");
 }
 
 body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  color: #000;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* Classic Windows selection + focus rectangle (dotted, like it's 1998) */
 ::selection {
-  background: var(--pine);
-  color: var(--paper);
+  background: var(--navy);
+  color: #fff;
 }
 
 :focus-visible {
-  outline: 2px solid var(--pine);
+  outline: 2px dotted currentColor;
   outline-offset: 2px;
 }
 
-/* Uppercase micro-labels used for metadata throughout the directory */
-.microlabel {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+/* Win95-style scrollbar (WebKit only — harmless elsewhere) */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-track {
+  background-color: #fff;
+  background-image: repeating-conic-gradient(var(--face) 0% 25%, #fff 0% 50%);
+  background-size: 4px 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--face);
+  border: 2px solid;
+  border-color: #fff var(--face-darker) var(--face-darker) #fff;
+  box-shadow:
+    inset 1px 1px 0 var(--face-light),
+    inset -1px -1px 0 var(--face-dark);
+}
+
+@layer components {
+  /* ------------------------------------------------------------------ */
+  /* Win95 chrome — raised panels, sunken wells, title bars              */
+  /* ------------------------------------------------------------------ */
+
+  /* Raised silver panel (dialog-box look) */
+  .win-panel {
+    background: var(--face);
+    border: 2px solid;
+    border-color: #fff var(--face-darker) var(--face-darker) #fff;
+    box-shadow:
+      inset 1px 1px 0 var(--face-light),
+      inset -1px -1px 0 var(--face-dark);
+  }
+
+  /* Sunken white well (list-box / text-area look) */
+  .win-well {
+    background: #fff;
+    border: 2px solid;
+    border-color: var(--face-dark) #fff #fff var(--face-dark);
+    box-shadow: inset 1px 1px 0 var(--face-darker);
+  }
+
+  /* Chunky ridge frame for the main content window */
+  .win-frame {
+    border: 4px ridge var(--face-light);
+  }
+
+  /* Gradient window title bar */
+  .titlebar {
+    background: linear-gradient(90deg, var(--navy), var(--royal));
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Beveled buttons                                                     */
+  /* ------------------------------------------------------------------ */
+  .btn95 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5ch;
+    background: var(--face);
+    border: 2px solid;
+    border-color: #fff var(--face-darker) var(--face-darker) #fff;
+    box-shadow:
+      inset 1px 1px 0 var(--face-light),
+      inset -1px -1px 0 var(--face-dark),
+      2px 2px 0 rgba(0, 0, 51, 0.4);
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+  }
+  .btn95:active {
+    border-color: var(--face-darker) #fff #fff var(--face-darker);
+    box-shadow:
+      inset 1px 1px 0 var(--face-dark),
+      inset -1px -1px 0 var(--face-light);
+    translate: 1px 1px;
+  }
+  .btn95:disabled {
+    color: var(--face-dark);
+    text-shadow: 1px 1px 0 #fff;
+    cursor: default;
+  }
+
+  .btn95-hot {
+    background: var(--hot-deep);
+    color: #fff;
+    border-color: #ff8866 #550000 #550000 #ff8866;
+    box-shadow:
+      inset 1px 1px 0 #ee4422,
+      inset -1px -1px 0 #881100,
+      2px 2px 0 rgba(0, 0, 51, 0.4);
+  }
+  .btn95-sun {
+    background: var(--sun);
+    color: #000;
+    border-color: #ffffcc #807800 #807800 #ffffcc;
+    box-shadow:
+      inset 1px 1px 0 #ffff88,
+      inset -1px -1px 0 #b3a800,
+      2px 2px 0 rgba(0, 0, 51, 0.4);
+  }
+  .btn95-grass {
+    background: var(--grass);
+    color: #fff;
+    border-color: #66cc66 #003300 #003300 #66cc66;
+    box-shadow:
+      inset 1px 1px 0 #33aa33,
+      inset -1px -1px 0 #005500,
+      2px 2px 0 rgba(0, 0, 51, 0.4);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Sunken form fields                                                  */
+  /* ------------------------------------------------------------------ */
+  .field95 {
+    background: #fff;
+    border: 2px solid;
+    border-color: var(--face-dark) var(--face-light) var(--face-light) var(--face-dark);
+    box-shadow: inset 1px 1px 0 var(--face-darker);
+    color: #000;
+    font-family: inherit;
+  }
+  .field95::placeholder {
+    color: var(--face-dark);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Classic hyperlinks — blue, underlined, purple when visited          */
+  /* ------------------------------------------------------------------ */
+  .weblink {
+    color: var(--link);
+    text-decoration: underline;
+  }
+  .weblink:visited {
+    color: var(--visited);
+  }
+  .weblink:hover {
+    color: var(--hot);
+  }
+
+  /* Variant for dark (footer / navy) backgrounds */
+  .weblink-dark {
+    color: #66ccff;
+    text-decoration: underline;
+  }
+  .weblink-dark:visited {
+    color: #cc99ff;
+  }
+  .weblink-dark:hover {
+    color: var(--sun);
+  }
+
+  /* Uppercase micro-labels used for metadata throughout the directory */
+  .microlabel {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 700;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* WordArt-grade display headings */
+  .wordart {
+    font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: var(--navy);
+    text-shadow:
+      2px 2px 0 #fff,
+      4px 4px 0 var(--hot);
+  }
+  .wordart-inverse {
+    font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: var(--sun);
+    text-shadow:
+      2px 2px 0 var(--hot-deep),
+      4px 4px 0 #000;
+  }
+
+  /* Rainbow divider — the immortal horizontal rule */
+  .hr-rainbow {
+    height: 8px;
+    border: 1px solid #000;
+    background: linear-gradient(
+      90deg,
+      #f00,
+      #ff8000,
+      #ff0,
+      #0c0,
+      #0cc,
+      #00f,
+      #c0c
+    );
+  }
+
+  /* Construction-tape stripe */
+  .stripes {
+    background: repeating-linear-gradient(
+      45deg,
+      #000 0 10px,
+      var(--sun) 10px 20px
+    );
+  }
+
+  /* LED hit-counter digits */
+  .led {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 700;
+    background: #000;
+    color: var(--lime);
+    border: 2px solid;
+    border-color: var(--face-darker) var(--face-light) var(--face-light) var(--face-darker);
+    padding: 2px 8px;
+    letter-spacing: 0.25em;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+  }
+
+  /* 88×31 web badges — the standard-issue footer hardware */
+  .badge31 {
+    width: 88px;
+    height: 31px;
+    flex: none;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 700;
+    font-size: 8px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-align: center;
+    border: 1px solid #000;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Motion — marquee & blink, faked with CSS, disabled on request      */
+  /* ------------------------------------------------------------------ */
+  .marquee {
+    display: flex;
+    overflow: hidden;
+  }
+  .marquee-track {
+    display: flex;
+    flex: none;
+    align-items: center;
+    white-space: nowrap;
+    animation: marquee-scroll 30s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+
+
+  .blink {
+    animation: blink95 1.2s linear infinite;
+  }
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes blink95 {
+  0%,
+  49.9% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .blink {
+    animation: none;
+  }
 }

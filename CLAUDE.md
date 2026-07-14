@@ -94,8 +94,15 @@ rather than changing the schema.
 
 ## Conventions
 
-- Restrained, editorial design: paper/ink palette, Fraunces display serif,
-  `microlabel` utility class for uppercase mono meta-labels. No heavy motion.
+- Deliberate early-web / Y2K aesthetic — a 2026 site wearing a 2000 skin:
+  starfield tile background, Win95-style chrome (`.win-panel`, `.win-well`,
+  `.btn95`, `.field95`, `.titlebar` in `app/globals.css`), web-safe font
+  stacks only (Verdana / Impact / Comic Sans MS / Courier New — no webfonts),
+  classic blue underlined links (`.weblink` / `.weblink-dark`), `microlabel`
+  utility for uppercase mono meta-labels. Marquee, blink, rainbow rules, and
+  the visitor counter are all faked with modern CSS/SVG (`.marquee`, `.blink`,
+  `.hr-rainbow`, `.led`) and respect `prefers-reduced-motion` — never use
+  deprecated tags, table layouts, frames, or autoplay audio.
 - Paid placement is always visibly labeled (Featured/Partner/Sponsor badges);
   verification is presented as independent of payment — keep it that way.
 - All listing-derived pages are static (SSG); only `/api/leads` is dynamic.

@@ -4,8 +4,7 @@ import { useState } from "react";
 
 const BUDGETS = ["Under $10k", "$10–25k", "$25–50k", "$50–100k", "$100k+"];
 
-const inputClasses =
-  "w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-faint transition-colors hover:border-line-strong focus:border-pine";
+const inputClasses = "field95 w-full px-3 py-2 text-sm";
 
 /**
  * "Request an intro" form on agency profiles. Submissions POST to /api/leads
@@ -40,11 +39,11 @@ export function LeadForm({
 
   if (status === "success") {
     return (
-      <div className="rounded-xl border border-pine/25 bg-pine-soft p-5">
-        <p className="font-display text-base font-semibold text-pine-deep">
-          Request sent
+      <div className="border-2 border-grass bg-[#ccffcc] p-5">
+        <p className="font-comic text-base font-bold text-[#004400]">
+          ✔ Request sent!
         </p>
-        <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
+        <p className="mt-1.5 text-sm leading-relaxed text-black">
           Thanks — we&apos;ll pass your brief to {agencyName} and you should
           hear back within two business days.
         </p>
@@ -98,13 +97,10 @@ export function LeadForm({
         <svg
           viewBox="0 0 12 12"
           aria-hidden
-          className="pointer-events-none absolute right-3 top-1/2 h-3 w-3 -translate-y-1/2 text-ink-faint"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
+          className="pointer-events-none absolute right-3 top-1/2 h-3 w-3 -translate-y-1/2 text-black"
+          fill="currentColor"
         >
-          <path d="M2.5 4.5L6 8l3.5-3.5" />
+          <path d="M1.5 3.5h9L6 9z" />
         </svg>
       </div>
       <textarea
@@ -117,16 +113,16 @@ export function LeadForm({
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full rounded-lg bg-pine px-4 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-pine-deep disabled:opacity-60"
+        className="btn95 btn95-grass w-full px-4 py-2.5 text-sm"
       >
         {status === "submitting" ? "Sending…" : "Request an intro"}
       </button>
       {status === "error" && (
-        <p className="text-sm text-[#a03d2e]">
+        <p className="text-sm font-bold text-hot-deep">
           Something went wrong — please try again in a moment.
         </p>
       )}
-      <p className="text-xs leading-relaxed text-ink-faint">
+      <p className="font-mono text-[11px] leading-relaxed text-face-darker">
         Free for buyers. We share your brief only with {agencyName}.
       </p>
     </form>

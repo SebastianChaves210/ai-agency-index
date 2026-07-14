@@ -89,14 +89,14 @@ export function initials(name: string): string {
   return (first + second).toUpperCase();
 }
 
-/** Deterministic muted background for logo monograms, keyed off the slug. */
+/** Deterministic saturated web-safe background for logo monograms, keyed off the slug. */
 const LOGO_PALETTE = [
-  "bg-[#21523f] text-[#f4f1e7]",
-  "bg-[#3d3a63] text-[#eceafb]",
-  "bg-[#6d3f2b] text-[#f8ede5]",
-  "bg-[#2f4d5c] text-[#e8f2f6]",
-  "bg-[#5c4a21] text-[#f7f0dd]",
-  "bg-[#54324e] text-[#f6ebf4]",
+  "bg-[#000080] text-[#ffff00]",
+  "bg-[#cc0000] text-[#ffffff]",
+  "bg-[#008000] text-[#ffff99]",
+  "bg-[#660099] text-[#ffccff]",
+  "bg-[#008080] text-[#ccffff]",
+  "bg-[#804000] text-[#ffcc66]",
 ];
 
 export function logoClasses(slug: string): string {
